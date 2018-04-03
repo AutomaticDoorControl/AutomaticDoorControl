@@ -1,0 +1,55 @@
+Note: This is assuming you have run the RasberryRemoteConfiguration
+Router information:
+Current router name is AutomaticDoor on channel 6. Username is admin, password is password
+1. Load up the Rasberry pi remote connection.
+2. open the terminal and type sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+	This will allow for the editting of the wpa_supplicant.conf file
+   edit the file to read
+
+   ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+   network={
+   ssid="AutomaticDoor"
+   key_mgmt=NONE
+   }
+
+   After you finish, use ctrl+x to save the file
+
+3. Type ifconfig wlan0  to the terminal
+    Look for the inet addr field and verify it is the ISP of the network
+
+4. Type wpa_cli -i wlan0 reconfigure to the terminal to configure wlan0
+    output should be OK, if not, try running the following commands
+    sudo ifup wlan0   
+    sudo ifdown wlan0
+    sudo ifup wlan0
+    wpa_cli -i wlan0 reconfigure     
+
+5. Type sudo ifup wlan0 to the terminal
+   You should now be connected to the network can see this on top right under wifi
+
+6. Run the following command in the terminal to create a vncserver
+	vncserver :1
+*note the 1 is the VNCserver, this can be any number
+*note If you every shut off the raspberry pi, you will have to restart the VNC server (nothing else has to be repeated)
+
+7. Install VNCViewer on your android phone on the play store
+
+8. Swtich your android phone to the same network as wlan0 is on (should be AutomaticDoor)
+
+9. Launch VNCViewer from your android phone and create a new connection
+	Address should be in the form IPAddress:vncserver
+		you can get the IPAddress from mousing over the wifi on the raspberry pi, look for the IPAddress
+		on the same line as "wlan0 Configured" 
+		*NOTE: if the IPAddress contains a '/' ignore the '/' and everything after it
+		vncserver is the same as in step 6
+	Name can []       be whatever the user prefers, I'd recommend Pi
+
+10. Use VNCViewer to connect from your phone to the Raspberry Pi, you will get a warning, ignore it
+	the username is pi
+	the password is raspberry
+11. You Can now connect to the raspberry pi to any device using AutomaticDoor wirelessly (:
+12. If you want to try the demo app on your phone, use VNCViewer to connect, open the command prompt and type
+ 	CD Documents
+	python3 popuptest.py
+	
+

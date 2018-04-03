@@ -1,0 +1,18 @@
+This document assumes you have completed the Remote and Wifi setups, detailed in other documents
+
+1. Connect your raspberry pi to the internet. I would recommend connecting the pi to the internet using an ethernet cable
+and then remoting into the pi using vnc viewer and the wifi setup.
+
+2. 
+Open the command prompt and run the line below to install apache to the pi
+sudo apt-get install apache2
+
+3. Open a web browser and go on http://localhost/ on the pi itself or http://192.168.0.102 (the pi's IP address)
+on another computer on the same network you should see the "Apache2 Debian Default Page"
+
+4. The default web page is an HTML file, located at /var/www/html/index.html run the command lines
+below to navigate to the file and change the owner so you can edit it
+cd /var/www/html
+sudo chown pi: index.html
+
+Now you can go to the index.html in the specified location and edit it to change the file

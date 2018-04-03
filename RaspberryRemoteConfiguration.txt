@@ -1,0 +1,35 @@
+This is a step-by-step guide on creating a remote connection between a fresh Raspberry Pi and
+a laptop, so that the user can connect and code from their personal computer. This is also the first step in configuring 
+a Raspberry Pi out of the box.
+*Note* This requires an ethernet cord, an external mouse, monitor an external keyboard.
+1. Download VNC Viewer to your main computer
+	VNC Viewer is what I used to connect to the Raspberry Pi. 
+	Note that should download VNC to what you want to control from (not raspberry pi)
+	Walk through installation
+	When you are done, open VNC Viewer. You should see a screen matching VNCmenu.png
+2. Unbox and assemble the Raspberry Pi
+	This is fairly straightforward and is described in the startup manual that comes with the rasperry pi.
+	Nothing should need to be forced, if you have trouble, please view these videos.
+3. Setup your Raspberry pi
+	Plug in the monitor, mouse, keyboard and powercord to get the Raspberry Pi's homescreen
+	up on the monitor. You'll need to varify that certain software is installed on the Raspberry Pi.
+4. Run some basic commands on the raspberry pi, to make sure VNC viewer is enabled on the raspberry pi
+	sudo apt-get update
+	sudo apt-get isntall dnsmasq
+	sudo apt-get install realvnc-vnc-server realvnc-vnc-viewer
+5. Edit the netowrk interfaces file using the terminal. Open using sudo nano /etc/network/interfaces
+	Find the line iface eth0 inet dhcp
+	Comment out the above line (using a #) and add the following lines
+	auto eth0
+	iface eth0 inet static
+	address 169.254.15.147
+	netmask 255.255.255.0
+Use Ctrl+x to save the file. The eht0 IP address is now 169.254.15.147
+6. Reboot the Raspberry Pi (use the sudo reboot command in the terminal)
+6. On your computer, download VNCViewer
+7. Connect your computer and the Raspberry Pi using the ethernet cable
+8. Create a new connection in VNCViewer, the VNC server should be 169.254.15.147, the name can be anything (ex: Pi)
+9. You can now access the Raspberry Pi remotely using VNCViewer and an ethernat cable. You don't need an external monitor, mouse or keyboard
+ 
+
+
