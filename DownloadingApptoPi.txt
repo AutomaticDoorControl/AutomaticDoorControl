@@ -1,0 +1,33 @@
+Assumes you have run Apache Web server remote access, RaspberryWifiSteup and RaspberryRemoteConfiguration.
+
+You will need to download node.js and npm (a package manager).
+Make sure the pi is connected to the iternent and type the following commands in terminal:
+
+apt-get remove --purge node* npm*
+uname -m
+
+note the number after after armv (will be 6, 7 or 8)
+go to the website nodejs.org/en/download, scroll down to Linux Binaries (ARM), find the version
+that matches the above number, right click Copy Link Address. Type in the terminal wget **ADDRESS**
+where *ADDRESS** is the address you just copied. Make sure the address ends in .gz (change it if it doesn't)
+Enter the following lines in Command line
+
+tar -xzf node-v8.11.1-linux-armv71.tar.gz
+cd node-v8.11.1-linux-armv71
+sudo cp -R * /usr/local/
+
+Note that node-v8.11.1-linux-armv71.tar.gz makes the downloaded file (version number may change)
+run:
+node -v
+npm -v
+
+
+Make sure the resulting version match the versions you attempted to download
+install angular using the command line
+
+Now downnload the application from github using git clone (both WebAPI and Web) using the 
+given instructions.
+
+Make sure that your router has an open port for the app:
+Open you router and add a port. The public and private IP should be the IP of the pi (192.168.0.100 right now)
+the port # should be 4200. The name can be anything.
