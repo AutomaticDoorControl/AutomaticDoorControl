@@ -27,6 +27,7 @@ install angular using the command line
 
 Now downnload the application from github using git clone (both WebAPI and Web) using the 
 given instructions.
+EXCEPTION: when doing anything related to angular cli, include --unsafe-perm
 
 Make sure that your router has an open port for the app:
 Open you router and add a port. The public and private IP should be the IP of the pi (192.168.0.100 right now)
