@@ -1,0 +1,18 @@
+A guide to ngrok: IP tunneling
+Note, this should work on any device that can run command line arguments, so 
+it would work on the raspberry pi, but not on the Arduino. We'd probably use this for the
+demo if we can't get bluetooth or something else to work.
+
+1. go to https://ngrok.com/ and create a free account
+2. Download ngrok (and unzip after the installion)
+3. The site instructions talk about verifying your account, but I never bothered to do this and 
+ngrok still worked fine
+4. Run our app (follow instructions documented AutoDoorCtrlWeb and AutoDoorCtrlWebAPI on github)
+5. Navigate to the ngrok directory (should be ngrok-stable-   followed by your OS) and type
+ngrok.exe http 4200 (or 8080 if your hosting the API).
+6. A popup on the command line will say forwarding: followed by an ip address followed by localhost:4200
+(or localhost:8080) ex: http://a9e8f7ad.ngrok.io -> localhost:4200. You can access the app from the IP on any device (even those
+that aren't on the same network).
+
+Check this link for more information on IP tunneling:
+https://en.wikipedia.org/wiki/IP_tunnel
