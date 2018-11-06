@@ -1,0 +1,30 @@
+NOTE: this requires a lot of free disk space (around 126G)
+1. Download virtualbox (if you haven't already) at https://www.virtualbox.org/wiki/Downloads
+2. Make sure you have Mas OS Sierra (you can get this at the mac online store). You will need a
+valid identification key
+3. Go into the Mac OS and grab the InstallESD.dmg file (move it to it's own folder)
+4. Convert the Mac OS from a .dmg file to a .iso file, to make the disk for the machine
+	Go to https://www.howtogeek.com/102983/how-to-convert-dmg-files-to-iso-files-on-windows/ and follow the instructions
+5. Now, we can actually create the VM: open virtual box and click new
+6. In the popup window, select type: Mac OS X   selection version to be whatever version of MAC OS you are using (have the .iso for)
+In this example, set the name to MacOS (can be anything)
+7. Set the memory size to 4096 MB
+8. Create a virutal hard disk now
+9. Chose a VDI for the hard disk file type
+10. Choose dynamically sized for the size type
+11. Set the file location to wherever you prefer, set the file size to 126GB
+12. Create the machine
+13. Go into machine settings:
+	Under system, uncheck floppy in the boot order block (should be optical and hard drive
+	In the processor tab, set Processor(s) to the line betweeen green and red
+	Under display, set video memory to its maximum value
+	Under storage: delete the empty disk, create a new SATA controller. In that controller, add a new optical drive. Choose the InstallESD.iso file
+14. Open command line and type the following commands (note that "MacOS" should be the name of your vm and "deviceKey" should be your device key)
+cd "C:\Program Files\Oracle\VirtualBox\"
+VBoxManage.exe modifyvm "MacOS" --cpuidset 00000001 000106e5 00100800 0098e3fd bfebfbff
+VBoxManage setextradata "MacOS" "VBoxInternal/Devices/efi/0/Config/DmiSystemProduct" "iMac11,3"
+VBoxManage setextradata "MacOS" "VBoxInternal/Devices/efi/0/Config/DmiSystemVersion" "1.0"
+VBoxManage setextradata "MacOS" "VBoxInternal/Devices/efi/0/Config/DmiBoardProduct" "Iloveapple"
+VBoxManage setextradata "MacOS" "VBoxInternal/Devices/smc/0/Config/DeviceKey" "deviceKey"
+VBoxManage setextradata "MacOS" "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
+15. Start the VM, you'll seee some command line jargin, the machine will then restart, ask for a default language, and download iso.
