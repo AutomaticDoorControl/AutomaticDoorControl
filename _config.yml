@@ -11,6 +11,3 @@ social-network-links:
   email: "automaticdoorcontrol@gmail.com"
   twitter: autodoorcontrol
   
-plugins:
-  - jekyll-paginate
-  - jekyll-sitemap
