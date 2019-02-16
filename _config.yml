@@ -3,3 +3,14 @@ theme: jekyll-theme-minimal
 title: Automatic Door Control 
 description: The homepage for the Automatic Door Control Project featuring project updates and more.
 
+navbar-links:
+  About ADC: "aboutme"
+
+social-network-links:
+  rss: true
+  email: "automaticdoorcontrol@gmail.com"
+  twitter: autodoorcontrol
+  
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
